@@ -29,7 +29,7 @@ class Block:
     self.getHash()
     while not self.checkDiff(diff):
       self.nonce += 1
-      print(self.nonce)
+      # print(self.nonce)
       self.getHash()
     dt = time.time() - d
     print("Mined in " + str(dt) + " " + self.hash)
@@ -84,11 +84,11 @@ class Chain:
 
   def printChain(self):
     for b in self.blocks:
-      print("--- Block " + str(b.index) + " ---")
+      print("--- Block " + str(b.index) + " " + "---" * 22)
       print("|| transactions : " + b.data)
       print("|| hash : " + b.hash)
       print("|| prevHash : " + b.prevHash)
-      print("--- END ---\n")
+      print("--- END " + " " + "---" * 22  + "---\n")
 
 
 # mining difficulty = 4
@@ -102,12 +102,17 @@ c.addBlock(Block("2 to Camille"))
 c.addBlock(Block("13 to Marth"))
 c.addBlock(Block("9 to Felix"))
 
-print(c.isChainValid())
+# chech chain validity
+c.isChainValid()
 
+# fake transaction
 cheater.cheat(c, 1, "6 to jean")
 
-print(c.isChainValid())
+# check chain validity
+c.isChainValid()
 
 c.printChain()
+
+print("len", len(c.blocks[0].hash) + 15)
 
 

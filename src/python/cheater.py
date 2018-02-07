@@ -7,3 +7,5 @@ def cheat(chain, index, newData):
     a = chain.blocks[i].mine(chain.diff)
     if i < len(chain.blocks)-1:
       chain.blocks[i+1].prevHash = a
+
+  print(chain.blocks[index].data)

@@ -22,4 +22,15 @@ def mine():
 
   print(a)
 
-mine()
+# mine()
+
+class t:
+  def __init__(self):
+    self.value = "test"
+
+def change(t):
+  t.value = "changed"
+
+a = t()
+change(a)
+print(a.value)
