@@ -2,7 +2,7 @@ import datetime
 import time
 import hashlib
 
-import cheater
+# import cheater
 
 class Block:
   def __init__(self, data):
@@ -90,29 +90,5 @@ class Chain:
       print("|| prevHash : " + b.prevHash)
       print("--- END " + " " + "---" * 22  + "---\n")
 
-
-# mining difficulty = 4
-c = Chain(4)
-c.createGenesis()
-c.addBlock(Block("3 to ARthur"))
-c.addBlock(Block("5 to Bob"))
-c.addBlock(Block("12 to Jean"))
-c.addBlock(Block("7 to Jake"))
-c.addBlock(Block("2 to Camille"))
-c.addBlock(Block("13 to Marth"))
-c.addBlock(Block("9 to Felix"))
-
-# chech chain validity
-c.isChainValid()
-
-# fake transaction
-cheater.cheat(c, 1, "6 to jean")
-
-# check chain validity
-c.isChainValid()
-
-c.printChain()
-
-print("len", len(c.blocks[0].hash) + 15)
 
 

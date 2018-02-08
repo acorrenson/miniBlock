@@ -1,36 +1,30 @@
-import hashlib
+from cheater import *
+from main import *
 
-# Proof of Work
-def checkHash(ha, diff):
-  """ha = hash to check; diff = difficulty"""
-  for i in range(0, diff):
-    if ha[i] != "0":
-      return False
-  return True
+# new Chain instance with
+# mining difficulty = 4
+c = Chain(4)
+c.createGenesis()
 
-# mine to validate PoW
-def mine():
-  i = 0;
-  nounce = str(i).encode()
-  a = hashlib.sha256(nounce).hexdigest()
+# simulate transactions
+c.addBlock(Block("3$ to Arthur"))
+c.addBlock(Block("5$ to Bob"))
+c.addBlock(Block("12$ to Jean"))
+c.addBlock(Block("7$ to Jake"))
+c.addBlock(Block("2$ to Camille"))
+c.addBlock(Block("13$ to Marth"))
+c.addBlock(Block("9$ to Felix"))
 
-  while checkHash(a, 4) != True:
-    i += 1
-    nounce = str(i).encode()
-    print(nounce);
-    a = hashlib.sha256(nounce).hexdigest()
+# chech chain validity
+c.isChainValid()
 
-  print(a)
+# fake transaction
+cheat(c, 1, "6 to jean")
 
-# mine()
+# check chain validity
+c.isChainValid()
 
-class t:
-  def __init__(self):
-    self.value = "test"
+# print all blocks
+c.printChain()
 
-def change(t):
-  t.value = "changed"
-
-a = t()
-change(a)
-print(a.value)
+print("len", len(c.blocks[0].hash) + 15)
