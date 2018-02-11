@@ -1,2 +1,2 @@
 # miniBlock
-A mini blockchain in python and javascript
+A mini blockchain in python
